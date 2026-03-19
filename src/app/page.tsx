@@ -184,7 +184,7 @@ export default function HomePage() {
               <img
                 src="/images/classic-logo.png"
                 alt="Classic Towing & Storage"
-                className="h-10 sm:h-12 w-auto brightness-0 invert transform group-hover:scale-105 transition-transform duration-300"
+                className="h-10 sm:h-12 w-auto transform group-hover:scale-105 transition-transform duration-300"
               />
             </a>
 
@@ -1014,7 +1014,7 @@ export default function HomePage() {
                 <img
                   src="/images/classic-logo.png"
                   alt="Classic Towing & Storage"
-                  className="h-12 w-auto brightness-0 invert"
+                  className="h-12 w-auto"
                 />
               </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-4">
