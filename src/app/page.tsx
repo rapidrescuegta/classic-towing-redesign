@@ -28,7 +28,6 @@ const LOCATIONS = [
   { city: 'Ajax', address: '91 Notion Road, Ajax, ON L1S 6K8', phone: '905-427-0903', email: 'ajax@classictowing.ca', hours: '24/7', officeHours: 'Mon-Fri: 8am–5pm' },
   { city: 'Barrie', address: '257 Tiffin St, Barrie, ON L4N 2N4', phone: '705-970-0481', email: 'barrie@classictowing.ca', hours: '24/7', officeHours: '24/7' },
   { city: 'Hamilton', address: '858 Nebo Road, Hamilton, ON L0R 1P0', phone: '905-570-0111', email: 'hamilton@classictowing.ca', hours: '24/7', officeHours: 'Mon-Fri: 8am–5pm' },
-  { city: 'Mississauga', address: 'Mississauga, ON', phone: '416-604-3222', email: 'info@classictowing.ca', hours: '24/7', officeHours: '24/7' },
 ]
 
 const SERVICES = [
@@ -62,7 +61,7 @@ const REVIEWS = [
 const STATS = [
   { value: '150+', label: 'Fleet Vehicles' },
   { value: '40+', label: 'Years of Service' },
-  { value: '5', label: 'Locations' },
+  { value: '4', label: 'Locations' },
   { value: '24/7', label: 'Emergency Dispatch' },
 ]
 
@@ -316,7 +315,7 @@ export default function HomePage() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-lg sm:text-xl text-gray-400 max-w-xl mb-10 leading-relaxed"
             >
-              Family-owned since the 1980s. Over 150 service vehicles and active personnel across 5 locations. From light-duty towing to heavy-duty recovery — we handle it all.
+              Family-owned since the 1980s. Over 150 service vehicles and active personnel across 4 locations. From light-duty towing to heavy-duty recovery — we handle it all.
             </motion.p>
 
             {/* CTAs */}
@@ -598,7 +597,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                     <Building2 className="w-8 h-8 text-classic-red mb-3" />
-                    <div className="text-2xl font-black text-white">5</div>
+                    <div className="text-2xl font-black text-white">4</div>
                     <div className="text-sm text-gray-400">Locations across Ontario</div>
                   </div>
                   <div className="bg-classic-red rounded-2xl p-6">
@@ -740,12 +739,12 @@ export default function HomePage() {
                 Our Locations
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                Strategically positioned across Southern Ontario for rapid response times.
+                Strategically positioned across the Golden Horseshoe for rapid response — and servicing well beyond.
               </p>
             </FadeIn>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {LOCATIONS.map((loc, i) => (
               <FadeIn key={loc.city} delay={i * 0.08}>
                 <div className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-black/10 hover:border-classic-red/20 transition-all duration-500 hover:-translate-y-1">
@@ -778,6 +777,15 @@ export default function HomePage() {
               </FadeIn>
             ))}
           </div>
+
+          {/* Service area note */}
+          <FadeIn delay={0.3}>
+            <div className="mt-10 text-center bg-gray-50 border border-gray-100 rounded-2xl px-6 py-5">
+              <p className="text-gray-600">
+                <span className="font-semibold text-classic-black">Serving all of Southern Ontario</span> — including Mississauga, Huntsville, Brampton, Oakville, Oshawa, and beyond. Our locations are positioned across the Golden Horseshoe for rapid response, but our fleet goes wherever you need us.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -925,7 +933,7 @@ export default function HomePage() {
                         <div className="text-xs text-white/70">Team Members</div>
                       </div>
                       <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                        <div className="text-2xl font-black text-white">5</div>
+                        <div className="text-2xl font-black text-white">4</div>
                         <div className="text-xs text-gray-400">Locations</div>
                       </div>
                       <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
