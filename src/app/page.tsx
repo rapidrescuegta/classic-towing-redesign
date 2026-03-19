@@ -179,14 +179,12 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-classic-red rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-                <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <div>
-                <span className="text-white font-bold text-base sm:text-lg tracking-tight">Classic Towing</span>
-                <span className="text-classic-steel text-xs block -mt-0.5">& Storage</span>
-              </div>
+            <a href="#" className="flex items-center group">
+              <img
+                src="/images/logo.png"
+                alt="Classic Towing & Storage"
+                className="h-11 sm:h-14 w-auto rounded-lg transform group-hover:scale-105 transition-transform duration-300"
+              />
             </a>
 
             {/* Desktop Nav */}
@@ -1011,14 +1009,12 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-classic-red rounded-lg flex items-center justify-center">
-                  <Truck className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <span className="text-white font-bold text-lg">Classic Towing</span>
-                  <span className="text-classic-steel text-xs block -mt-0.5">& Storage</span>
-                </div>
+              <div className="mb-4">
+                <img
+                  src="/images/logo.png"
+                  alt="Classic Towing & Storage"
+                  className="h-14 w-auto rounded-lg"
+                />
               </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-4">
                 Family-owned and operated since the 1980s. Ontario&apos;s most trusted towing and storage company.
