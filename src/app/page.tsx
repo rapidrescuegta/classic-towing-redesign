@@ -28,6 +28,7 @@ const LOCATIONS = [
   { city: 'Ajax', address: '91 Notion Road, Ajax, ON L1S 6K8', phone: '905-427-0903', email: 'ajax@classictowing.ca', hours: '24/7', officeHours: 'Mon-Fri: 8am–5pm' },
   { city: 'Barrie', address: '257 Tiffin St, Barrie, ON L4N 2N4', phone: '705-970-0481', email: 'barrie@classictowing.ca', hours: '24/7', officeHours: '24/7' },
   { city: 'Hamilton', address: '858 Nebo Road, Hamilton, ON L0R 1P0', phone: '905-570-0111', email: 'hamilton@classictowing.ca', hours: '24/7', officeHours: 'Mon-Fri: 8am–5pm' },
+  { city: 'Mississauga', address: 'Mississauga, ON', phone: '416-604-3222', email: 'info@classictowing.ca', hours: '24/7', officeHours: '24/7' },
 ]
 
 const SERVICES = [
@@ -61,7 +62,7 @@ const REVIEWS = [
 const STATS = [
   { value: '150+', label: 'Fleet Vehicles' },
   { value: '40+', label: 'Years of Service' },
-  { value: '8', label: 'Locations' },
+  { value: '5', label: 'Locations' },
   { value: '24/7', label: 'Emergency Dispatch' },
 ]
 
@@ -82,10 +83,72 @@ function FadeIn({ children, delay = 0, className = '' }: { children: React.React
   )
 }
 
+// ─── FLEET LIGHTBOX ─────────────────────────────────────────────────
+function FleetLightbox({ item, onClose }: { item: typeof FLEET_ITEMS[number]; onClose: () => void }) {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKey)
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', handleKey) }
+  }, [onClose])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+        className="relative max-w-5xl w-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
+          <div className="bg-gray-50 p-6 sm:p-10">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-auto max-h-[70vh] object-contain"
+            />
+          </div>
+          <div className="px-6 py-4 flex items-center justify-between border-t border-gray-100">
+            <div className="flex items-center gap-3">
+              <h3 className="font-bold text-xl text-classic-black">{item.name}</h3>
+              {item.featured && (
+                <span className="bg-classic-red text-white text-xs font-bold px-2.5 py-1 rounded-full">FLAGSHIP</span>
+              )}
+              {item.pink && (
+                <span className="bg-pink-500 text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                  <Heart className="w-3 h-3 fill-white" /> PINK THEORY
+                </span>
+              )}
+            </div>
+            <button
+              onClick={onClose}
+              className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5 text-gray-600" />
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 // ─── MAIN PAGE ──────────────────────────────────────────────────────
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [lightboxItem, setLightboxItem] = useState<typeof FLEET_ITEMS[number] | null>(null)
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0])
@@ -100,6 +163,11 @@ export default function HomePage() {
 
   return (
     <main className="overflow-x-hidden">
+      {/* ─── FLEET LIGHTBOX OVERLAY ─── */}
+      <AnimatePresence>
+        {lightboxItem && <FleetLightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />}
+      </AnimatePresence>
+
       {/* ─── NAVIGATION ─── */}
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -248,7 +316,7 @@ export default function HomePage() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-lg sm:text-xl text-gray-400 max-w-xl mb-10 leading-relaxed"
             >
-              Family-owned since the 1980s. Over 150 service vehicles and active personnel across 8 locations. From light-duty towing to heavy-duty recovery — we handle it all.
+              Family-owned since the 1980s. Over 150 service vehicles and active personnel across 5 locations. From light-duty towing to heavy-duty recovery — we handle it all.
             </motion.p>
 
             {/* CTAs */}
@@ -453,33 +521,39 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {FLEET_ITEMS.map((item, i) => (
               <FadeIn key={item.name} delay={i * 0.08} className={item.featured ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : ''}>
-                <div className={`group relative rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-black/10 transition-all duration-500 hover:-translate-y-1 h-full ${item.pink ? 'bg-gradient-to-br from-pink-50 to-pink-100/50 border border-pink-200/50' : 'bg-gray-50'}`}>
-                  <div className={`overflow-hidden bg-gray-100/50 ${item.featured ? 'aspect-[4/3] lg:aspect-auto lg:h-[calc(100%-4.5rem)]' : 'aspect-[4/3]'}`}>
+                <button
+                  onClick={() => setLightboxItem(item)}
+                  className={`group relative rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full w-full text-left cursor-pointer ${item.pink ? 'bg-gradient-to-br from-pink-50 to-pink-100/50 border border-pink-200/50 hover:shadow-pink-200/40' : 'bg-gray-50 hover:shadow-black/10'}`}
+                >
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 z-10 bg-black/0 group-hover:bg-black/5 transition-all duration-500 flex items-center justify-center">
+                    <div className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-400 shadow-lg">
+                      <svg className="w-6 h-6 text-classic-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className={`overflow-hidden bg-gray-100/50 ${item.featured ? 'aspect-[4/3] lg:aspect-auto lg:h-[calc(100%-4rem)]' : 'aspect-[4/3]'}`}>
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
                   </div>
-                  <div className="p-5">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-bold text-lg text-classic-black">{item.name}</h3>
-                        {item.featured && (
-                          <span className="bg-classic-red text-white text-xs font-bold px-2 py-0.5 rounded-full">FLAGSHIP</span>
-                        )}
-                        {item.pink && (
-                          <span className="bg-pink-500 text-white text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
-                            <Heart className="w-3 h-3 fill-white" /> PINK THEORY
-                          </span>
-                        )}
-                      </div>
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${item.pink ? 'bg-pink-500/10 text-pink-500 group-hover:bg-pink-500 group-hover:text-white' : 'bg-classic-red/10 text-classic-red group-hover:bg-classic-red group-hover:text-white'}`}>
-                        <ChevronRight className="w-4 h-4" />
-                      </div>
+                  <div className="px-5 py-4">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-bold text-lg text-classic-black">{item.name}</h3>
+                      {item.featured && (
+                        <span className="bg-classic-red text-white text-xs font-bold px-2 py-0.5 rounded-full">FLAGSHIP</span>
+                      )}
+                      {item.pink && (
+                        <span className="bg-pink-500 text-white text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <Heart className="w-3 h-3 fill-white" /> PINK THEORY
+                        </span>
+                      )}
                     </div>
                   </div>
-                </div>
+                </button>
               </FadeIn>
             ))}
           </div>
@@ -524,7 +598,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                     <Building2 className="w-8 h-8 text-classic-red mb-3" />
-                    <div className="text-2xl font-black text-white">8</div>
+                    <div className="text-2xl font-black text-white">5</div>
                     <div className="text-sm text-gray-400">Locations across Ontario</div>
                   </div>
                   <div className="bg-classic-red rounded-2xl p-6">
@@ -671,7 +745,7 @@ export default function HomePage() {
             </FadeIn>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {LOCATIONS.map((loc, i) => (
               <FadeIn key={loc.city} delay={i * 0.08}>
                 <div className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-black/10 hover:border-classic-red/20 transition-all duration-500 hover:-translate-y-1">
