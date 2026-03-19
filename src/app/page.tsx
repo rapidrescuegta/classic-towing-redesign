@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion'
 import {
   Phone, MapPin, Clock, ChevronDown, Menu, X,
-  Truck, Battery, Fuel, Wrench, ShieldCheck, Star,
+  Battery, Fuel, Wrench, ShieldCheck, Star,
   ArrowRight, Lock, Zap, Award, Users, Building2,
   ChevronRight, Mail, ExternalLink, Heart, Sparkles
 } from 'lucide-react'
+import TowTruckIcon from '@/components/TowTruckIcon'
 
 // ─── DATA ────────────────────────────────────────────────────────────
 const PHONE = '416-604-3222'
@@ -32,7 +33,7 @@ const LOCATIONS = [
 ]
 
 const SERVICES = [
-  { icon: Truck, title: 'Light Duty Towing', desc: 'Cars, SUVs, and small trucks transported safely with our modern fleet of light-duty tow trucks.' },
+  { icon: TowTruckIcon, title: 'Light Duty Towing', desc: 'Cars, SUVs, and small trucks transported safely with our modern fleet of light-duty tow trucks.' },
   { icon: Zap, title: 'Medium Duty Towing', desc: 'Box trucks, delivery vehicles, and RVs handled with precision using purpose-built medium-duty equipment.' },
   { icon: ShieldCheck, title: 'Heavy Duty Towing', desc: 'Semi-trucks, buses, and heavy equipment recovered and transported by our specialized rotator and boom trucks.' },
   { icon: Lock, title: 'Lockout Service', desc: 'Locked out? Our technicians will have you back in your vehicle in minutes, any time day or night.' },
@@ -612,7 +613,7 @@ export default function HomePage() {
                     <div className="text-sm text-gray-400">Google rating</div>
                   </div>
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <Truck className="w-8 h-8 text-classic-red mb-3" />
+                    <TowTruckIcon className="w-8 h-8 text-classic-red mb-3" />
                     <div className="text-2xl font-black text-white">150+</div>
                     <div className="text-sm text-gray-400">Service vehicles</div>
                   </div>
@@ -916,7 +917,7 @@ export default function HomePage() {
                       </p>
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-classic-red rounded-full flex items-center justify-center">
-                          <Truck className="w-5 h-5 text-white" />
+                          <TowTruckIcon className="w-5 h-5 text-white" />
                         </div>
                         <div>
                           <div className="text-white font-bold text-sm">The Classic Towing Team</div>

@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   title: 'Classic Towing & Storage | Southern Ontario Towing',
   description: 'Classic Towing provides 24/7 Light, Medium, and Heavy Duty Towing across Southern Ontario with locations in Toronto, Mississauga, Hamilton, Ajax, Barrie, and Huntsville.',
   metadataBase: new URL('https://classictowing.ca'),
+  icons: {
+    icon: '/images/classic-logo.png',
+    apple: '/images/classic-logo.png',
+  },
   openGraph: {
     title: 'Classic Towing & Storage | Southern Ontario Towing',
     description: '24/7 Towing & Roadside Assistance across Southern Ontario. 150+ fleet vehicles. Family-owned since the 1980s.',
