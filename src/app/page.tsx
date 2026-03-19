@@ -181,9 +181,9 @@ export default function HomePage() {
             {/* Logo */}
             <a href="#" className="flex items-center group">
               <img
-                src="/images/logo.png"
+                src="/images/classic-logo.png"
                 alt="Classic Towing & Storage"
-                className="h-11 sm:h-14 w-auto rounded-lg transform group-hover:scale-105 transition-transform duration-300"
+                className="h-10 sm:h-12 w-auto brightness-0 invert transform group-hover:scale-105 transition-transform duration-300"
               />
             </a>
 
@@ -1011,9 +1011,9 @@ export default function HomePage() {
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="mb-4">
                 <img
-                  src="/images/logo.png"
+                  src="/images/classic-logo.png"
                   alt="Classic Towing & Storage"
-                  className="h-14 w-auto rounded-lg"
+                  className="h-12 w-auto brightness-0 invert"
                 />
               </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-4">
