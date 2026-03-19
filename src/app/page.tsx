@@ -6,7 +6,7 @@ import {
   Phone, MapPin, Clock, ChevronDown, Menu, X,
   Truck, Battery, Fuel, Wrench, ShieldCheck, Star,
   ArrowRight, Lock, Zap, Award, Users, Building2,
-  ChevronRight, Mail, ExternalLink
+  ChevronRight, Mail, ExternalLink, Heart, Sparkles
 } from 'lucide-react'
 
 // ─── DATA ────────────────────────────────────────────────────────────
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Fleet', href: '#fleet' },
+  { label: 'Pink Theory', href: '#pink-theory' },
   { label: 'Locations', href: '#locations' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Contact', href: '#contact' },
@@ -41,12 +42,12 @@ const SERVICES = [
 ]
 
 const FLEET_ITEMS = [
-  { name: '1 Ton Trucks', image: '/images/Classic-1.png' },
-  { name: 'Medium Trucks', image: '/images/Classic-3.png' },
-  { name: 'Heavy + Rotator', image: '/images/Classic-4.png' },
-  { name: 'Flatbed', image: '/images/Classic-19.png' },
-  { name: 'Tandem Flatbed', image: '/images/Classic-22.png' },
-  { name: 'Float', image: '/images/Classic-23.png' },
+  { name: 'Medium Duty', image: '/images/Classic-1.png', featured: false },
+  { name: '75 Ton Rotator', image: '/images/Classic-3.png', featured: true },
+  { name: 'Flatbed', image: '/images/Classic-4.png', featured: false },
+  { name: 'Heavy Duty', image: '/images/Classic-19.png', featured: false },
+  { name: 'Pink Theory Underground', image: '/images/Classic-22.png', featured: false, pink: true },
+  { name: 'Christmas Parade Flatbed', image: '/images/Classic-23.png', featured: false },
 ]
 
 const REVIEWS = [
@@ -451,9 +452,9 @@ export default function HomePage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {FLEET_ITEMS.map((item, i) => (
-              <FadeIn key={item.name} delay={i * 0.08}>
-                <div className="group relative bg-gray-50 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-black/10 transition-all duration-500 hover:-translate-y-1">
-                  <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+              <FadeIn key={item.name} delay={i * 0.08} className={item.featured ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : ''}>
+                <div className={`group relative rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-black/10 transition-all duration-500 hover:-translate-y-1 h-full ${item.pink ? 'bg-gradient-to-br from-pink-50 to-pink-100/50 border border-pink-200/50' : 'bg-gray-50'}`}>
+                  <div className={`overflow-hidden bg-gray-100/50 ${item.featured ? 'aspect-[4/3] lg:aspect-auto lg:h-[calc(100%-4.5rem)]' : 'aspect-[4/3]'}`}>
                     <img
                       src={item.image}
                       alt={item.name}
@@ -462,8 +463,18 @@ export default function HomePage() {
                   </div>
                   <div className="p-5">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-bold text-lg text-classic-black">{item.name}</h3>
-                      <div className="w-8 h-8 bg-classic-red/10 rounded-lg flex items-center justify-center group-hover:bg-classic-red group-hover:text-white text-classic-red transition-all duration-300">
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-bold text-lg text-classic-black">{item.name}</h3>
+                        {item.featured && (
+                          <span className="bg-classic-red text-white text-xs font-bold px-2 py-0.5 rounded-full">FLAGSHIP</span>
+                        )}
+                        {item.pink && (
+                          <span className="bg-pink-500 text-white text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <Heart className="w-3 h-3 fill-white" /> PINK THEORY
+                          </span>
+                        )}
+                      </div>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${item.pink ? 'bg-pink-500/10 text-pink-500 group-hover:bg-pink-500 group-hover:text-white' : 'bg-classic-red/10 text-classic-red group-hover:bg-classic-red group-hover:text-white'}`}>
                         <ChevronRight className="w-4 h-4" />
                       </div>
                     </div>
@@ -495,6 +506,7 @@ export default function HomePage() {
                   'Family-owned — personal accountability, not corporate runaround',
                   'Featured on Discovery Channel\'s Heavy Rescue 401',
                   'Under contract with several police districts',
+                  'Pink Theory initiative — empowering women in towing',
                   'Active in community giving and involvement',
                   'ISO certified for quality and safety standards',
                 ].map((point, i) => (
@@ -535,6 +547,111 @@ export default function HomePage() {
                 </div>
               </div>
             </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── PINK THEORY ─── */}
+      <section id="pink-theory" className="relative py-24 sm:py-32 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFF0F5 0%, #FFFFFF 30%, #FFF5F8 60%, #FFFFFF 100%)' }}>
+        {/* Decorative pink elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-pink-300/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-200/10 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Image side */}
+            <FadeIn>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-br from-pink-200/30 to-pink-300/20 rounded-3xl -rotate-2" />
+                <div className="absolute -inset-4 bg-gradient-to-tr from-pink-100/20 to-transparent rounded-3xl rotate-1" />
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-pink-900/10 border border-pink-200/30">
+                  <img
+                    src="/images/Classic-22.png"
+                    alt="Pink Theory underground tow truck"
+                    className="w-full h-auto"
+                  />
+                </div>
+                {/* Floating badge */}
+                <div className="absolute -bottom-4 -left-4 bg-pink-500 text-white px-5 py-3 rounded-xl shadow-xl shadow-pink-500/30">
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-5 h-5 fill-white" />
+                    <span className="font-black text-lg">Pink Theory</span>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Content side */}
+            <div>
+              <FadeIn>
+                <div className="inline-flex items-center gap-2 bg-pink-500/10 border border-pink-500/20 rounded-full px-4 py-1.5 mb-6">
+                  <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />
+                  <span className="text-pink-600 text-sm font-semibold">Empowering Women in Towing</span>
+                </div>
+                <h2 className="text-4xl sm:text-5xl font-black text-classic-black mt-2 mb-6 leading-tight">
+                  Changing the Face of
+                  <br />
+                  <span className="bg-gradient-to-r from-pink-500 to-pink-600 bg-clip-text text-transparent">The Towing Industry</span>
+                </h2>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                  <strong className="text-classic-black">Pink Theory</strong> is an initiative founded by Mercedez Falcao, Regional Manager of Classic Towing&apos;s Northern Division and Paul&apos;s daughter. Her mission: make towing careers more visible and appealing to women across Canada.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  Through a signature splash of pink on trucks and uniforms, Pink Theory has created a growing community of female tow operators. New female hires receive pink gloves and straps — and those who stay on and meet their goals are offered a fully pink, branded truck. Mercedez was named <strong className="text-classic-black">Tow Times&apos; Woman of Towing</strong>, and Pink Theory has been featured in CAA Magazine.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="bg-white border border-pink-100 rounded-xl p-4 shadow-sm">
+                    <Sparkles className="w-6 h-6 text-pink-500 mb-2" />
+                    <div className="font-bold text-classic-black">Pink Perks</div>
+                    <div className="text-sm text-gray-500">Pink gloves, straps & branded trucks for female drivers</div>
+                  </div>
+                  <div className="bg-white border border-pink-100 rounded-xl p-4 shadow-sm">
+                    <Award className="w-6 h-6 text-pink-500 mb-2" />
+                    <div className="font-bold text-classic-black">Award Winning</div>
+                    <div className="text-sm text-gray-500">Featured in Tow Times & CAA Magazine</div>
+                  </div>
+                  <div className="bg-white border border-pink-100 rounded-xl p-4 shadow-sm">
+                    <Users className="w-6 h-6 text-pink-500 mb-2" />
+                    <div className="font-bold text-classic-black">Community</div>
+                    <div className="text-sm text-gray-500">Growing network of female tow operators across North America</div>
+                  </div>
+                  <div className="bg-white border border-pink-100 rounded-xl p-4 shadow-sm">
+                    <Heart className="w-6 h-6 text-pink-500 fill-pink-500 mb-2" />
+                    <div className="font-bold text-classic-black">Family Legacy</div>
+                    <div className="text-sm text-gray-500">Third generation leading the way at Classic Towing</div>
+                  </div>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.25}>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://www.facebook.com/p/Pink-Theory-61560624817152/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/30 hover:-translate-y-0.5"
+                  >
+                    Follow Pink Theory
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/pinkktheory_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-white hover:bg-pink-50 text-pink-600 border border-pink-200 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    @pinkktheory_
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </FadeIn>
+            </div>
           </div>
         </div>
       </section>
