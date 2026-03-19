@@ -20,6 +20,7 @@ const NAV_ITEMS = [
   { label: 'Pink Theory', href: '#pink-theory' },
   { label: 'Locations', href: '#locations' },
   { label: 'Reviews', href: '#reviews' },
+  { label: 'Careers', href: '#careers' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -182,8 +183,8 @@ export default function HomePage() {
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-classic-red rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
                 <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <div className="hidden sm:block">
-                <span className="text-white font-bold text-lg tracking-tight">Classic Towing</span>
+              <div>
+                <span className="text-white font-bold text-base sm:text-lg tracking-tight">Classic Towing</span>
                 <span className="text-classic-steel text-xs block -mt-0.5">& Storage</span>
               </div>
             </a>
@@ -625,7 +626,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── PINK THEORY ─── */}
-      <section id="pink-theory" className="relative py-24 sm:py-32 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFF0F5 0%, #FFFFFF 30%, #FFF5F8 60%, #FFFFFF 100%)' }}>
+      <section id="pink-theory" className="relative py-[10mm] pt-[calc(10mm+5rem)] overflow-hidden min-h-screen flex items-center" style={{ background: 'linear-gradient(135deg, #FFF0F5 0%, #FFFFFF 30%, #FFF5F8 60%, #FFFFFF 100%)' }}>
         {/* Decorative pink elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-pink-300/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-400/10 rounded-full blur-3xl" />
@@ -837,9 +838,9 @@ export default function HomePage() {
       </section>
 
       {/* ─── CAREERS ─── */}
-      <section className="relative py-24 sm:py-32 bg-classic-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-3xl overflow-hidden">
+      <section id="careers" className="relative py-[10mm] pt-[calc(10mm+5rem)] bg-classic-white overflow-hidden min-h-screen flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="relative rounded-3xl overflow-hidden min-h-[calc(100vh-20mm-5rem)]">
             {/* Dark dramatic background */}
             <div className="absolute inset-0 bg-classic-black" />
             <div className="absolute inset-0 bg-[url('/images/bg-strap.jpg')] bg-cover bg-center opacity-10" />
@@ -847,59 +848,59 @@ export default function HomePage() {
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-classic-red/15 rounded-full blur-3xl" />
             <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-classic-red/10 rounded-full blur-3xl" />
 
-            <div className="relative px-8 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-24">
-              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="relative px-6 sm:px-10 lg:px-14 py-10 sm:py-12 lg:py-14 min-h-[calc(100vh-20mm-5rem)] flex items-center">
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Left: Content */}
                 <FadeIn>
                   <div>
-                    <div className="inline-flex items-center gap-2 bg-classic-red/10 border border-classic-red/20 rounded-full px-4 py-1.5 mb-6">
-                      <Zap className="w-4 h-4 text-classic-red" />
-                      <span className="text-classic-red text-sm font-semibold">Now Hiring</span>
+                    <div className="inline-flex items-center gap-2 bg-classic-red/10 border border-classic-red/20 rounded-full px-3 py-1 mb-4">
+                      <Zap className="w-3.5 h-3.5 text-classic-red" />
+                      <span className="text-classic-red text-xs font-semibold">Now Hiring</span>
                     </div>
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.95] mb-6">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[0.95] mb-4">
                       Not All Heroes
                       <br />
                       Wear Capes.
                       <br />
                       <span className="text-gradient-red">Some Drive Trucks.</span>
                     </h2>
-                    <p className="text-gray-400 text-lg mb-8 leading-relaxed max-w-lg">
+                    <p className="text-gray-400 mb-6 leading-relaxed max-w-lg">
                       Every day, our drivers rescue stranded motorists, clear accident scenes, and keep Ontario&apos;s roads moving. If you&apos;re looking for a career where you make a real difference — this is it.
                     </p>
 
-                    <div className="space-y-4 mb-10">
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-6">
                       {[
-                        { title: 'Competitive pay', desc: 'Earn well doing work that matters' },
-                        { title: 'Full training provided', desc: 'No experience? We\'ll teach you everything' },
-                        { title: 'Family culture', desc: 'Join a team that treats you like one of their own' },
-                        { title: 'Growth opportunities', desc: 'Build a long-term career, not just a job' },
+                        { title: 'Competitive pay', desc: 'Work that pays well & matters' },
+                        { title: 'Full training', desc: 'No experience needed' },
+                        { title: 'Family culture', desc: 'You\'re one of our own' },
+                        { title: 'Career growth', desc: 'Long-term, not just a job' },
                       ].map((perk, i) => (
-                        <div key={i} className="flex items-start gap-4">
-                          <div className="w-10 h-10 bg-classic-red/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <ShieldCheck className="w-5 h-5 text-classic-red" />
+                        <div key={i} className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-classic-red/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <ShieldCheck className="w-4 h-4 text-classic-red" />
                           </div>
                           <div>
-                            <div className="text-white font-bold">{perk.title}</div>
-                            <div className="text-gray-500 text-sm">{perk.desc}</div>
+                            <div className="text-white font-semibold text-sm">{perk.title}</div>
+                            <div className="text-gray-500 text-xs">{perk.desc}</div>
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <a
                         href="mailto:careers@classictowing.ca"
-                        className="group flex items-center justify-center gap-3 bg-classic-red hover:bg-classic-red-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/40 hover:-translate-y-0.5"
+                        className="group flex items-center justify-center gap-2 bg-classic-red hover:bg-classic-red-dark text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/40 hover:-translate-y-0.5"
                       >
-                        <Mail className="w-5 h-5" />
+                        <Mail className="w-4 h-4" />
                         Apply Now
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </a>
                       <a
                         href={`tel:${PHONE}`}
-                        className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"
+                        className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300"
                       >
-                        <Phone className="w-5 h-5" />
+                        <Phone className="w-4 h-4" />
                         Call Us to Learn More
                       </a>
                     </div>
@@ -909,35 +910,35 @@ export default function HomePage() {
                 {/* Right: Visual */}
                 <FadeIn delay={0.2}>
                   <div className="relative">
-                    {/* Large quote card */}
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-                      <div className="text-6xl text-classic-red/30 font-serif leading-none mb-4">&ldquo;</div>
-                      <p className="text-xl sm:text-2xl text-white font-medium leading-relaxed mb-6">
+                    {/* Quote card */}
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                      <div className="text-5xl text-classic-red/30 font-serif leading-none mb-2">&ldquo;</div>
+                      <p className="text-lg sm:text-xl text-white font-medium leading-relaxed mb-4">
                         Every call is someone&apos;s worst day. We show up and make it better. That&apos;s not just a job — that&apos;s a calling.
                       </p>
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-classic-red rounded-full flex items-center justify-center">
-                          <Truck className="w-6 h-6 text-white" />
+                        <div className="w-10 h-10 bg-classic-red rounded-full flex items-center justify-center">
+                          <Truck className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <div className="text-white font-bold">The Classic Towing Team</div>
-                          <div className="text-gray-500 text-sm">Family-owned since the 1980s</div>
+                          <div className="text-white font-bold text-sm">The Classic Towing Team</div>
+                          <div className="text-gray-500 text-xs">Family-owned since the 1980s</div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Floating stats */}
-                    <div className="mt-6 grid grid-cols-3 gap-4">
-                      <div className="bg-classic-red rounded-xl p-4 text-center">
-                        <div className="text-2xl font-black text-white">150+</div>
+                    {/* Stats row */}
+                    <div className="mt-4 grid grid-cols-3 gap-3">
+                      <div className="bg-classic-red rounded-xl p-3 text-center">
+                        <div className="text-xl font-black text-white">150+</div>
                         <div className="text-xs text-white/70">Team Members</div>
                       </div>
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                        <div className="text-2xl font-black text-white">4</div>
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                        <div className="text-xl font-black text-white">4</div>
                         <div className="text-xs text-gray-400">Locations</div>
                       </div>
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                        <div className="text-2xl font-black text-white">40+</div>
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                        <div className="text-xl font-black text-white">40+</div>
                         <div className="text-xs text-gray-400">Years Strong</div>
                       </div>
                     </div>
