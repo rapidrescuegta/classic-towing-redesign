@@ -828,6 +828,119 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── CAREERS ─── */}
+      <section className="relative py-24 sm:py-32 bg-classic-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-3xl overflow-hidden">
+            {/* Dark dramatic background */}
+            <div className="absolute inset-0 bg-classic-black" />
+            <div className="absolute inset-0 bg-[url('/images/bg-strap.jpg')] bg-cover bg-center opacity-10" />
+            {/* Red accent glow */}
+            <div className="absolute -top-32 -right-32 w-96 h-96 bg-classic-red/15 rounded-full blur-3xl" />
+            <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-classic-red/10 rounded-full blur-3xl" />
+
+            <div className="relative px-8 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-24">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                {/* Left: Content */}
+                <FadeIn>
+                  <div>
+                    <div className="inline-flex items-center gap-2 bg-classic-red/10 border border-classic-red/20 rounded-full px-4 py-1.5 mb-6">
+                      <Zap className="w-4 h-4 text-classic-red" />
+                      <span className="text-classic-red text-sm font-semibold">Now Hiring</span>
+                    </div>
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.95] mb-6">
+                      Not All Heroes
+                      <br />
+                      Wear Capes.
+                      <br />
+                      <span className="text-gradient-red">Some Drive Trucks.</span>
+                    </h2>
+                    <p className="text-gray-400 text-lg mb-8 leading-relaxed max-w-lg">
+                      Every day, our drivers rescue stranded motorists, clear accident scenes, and keep Ontario&apos;s roads moving. If you&apos;re looking for a career where you make a real difference — this is it.
+                    </p>
+
+                    <div className="space-y-4 mb-10">
+                      {[
+                        { title: 'Competitive pay', desc: 'Earn well doing work that matters' },
+                        { title: 'Full training provided', desc: 'No experience? We\'ll teach you everything' },
+                        { title: 'Family culture', desc: 'Join a team that treats you like one of their own' },
+                        { title: 'Growth opportunities', desc: 'Build a long-term career, not just a job' },
+                      ].map((perk, i) => (
+                        <div key={i} className="flex items-start gap-4">
+                          <div className="w-10 h-10 bg-classic-red/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <ShieldCheck className="w-5 h-5 text-classic-red" />
+                          </div>
+                          <div>
+                            <div className="text-white font-bold">{perk.title}</div>
+                            <div className="text-gray-500 text-sm">{perk.desc}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <a
+                        href="mailto:careers@classictowing.ca"
+                        className="group flex items-center justify-center gap-3 bg-classic-red hover:bg-classic-red-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/40 hover:-translate-y-0.5"
+                      >
+                        <Mail className="w-5 h-5" />
+                        Apply Now
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                      <a
+                        href={`tel:${PHONE}`}
+                        className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"
+                      >
+                        <Phone className="w-5 h-5" />
+                        Call Us to Learn More
+                      </a>
+                    </div>
+                  </div>
+                </FadeIn>
+
+                {/* Right: Visual */}
+                <FadeIn delay={0.2}>
+                  <div className="relative">
+                    {/* Large quote card */}
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                      <div className="text-6xl text-classic-red/30 font-serif leading-none mb-4">&ldquo;</div>
+                      <p className="text-xl sm:text-2xl text-white font-medium leading-relaxed mb-6">
+                        Every call is someone&apos;s worst day. We show up and make it better. That&apos;s not just a job — that&apos;s a calling.
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-classic-red rounded-full flex items-center justify-center">
+                          <Truck className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <div className="text-white font-bold">The Classic Towing Team</div>
+                          <div className="text-gray-500 text-sm">Family-owned since the 1980s</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Floating stats */}
+                    <div className="mt-6 grid grid-cols-3 gap-4">
+                      <div className="bg-classic-red rounded-xl p-4 text-center">
+                        <div className="text-2xl font-black text-white">150+</div>
+                        <div className="text-xs text-white/70">Team Members</div>
+                      </div>
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                        <div className="text-2xl font-black text-white">5</div>
+                        <div className="text-xs text-gray-400">Locations</div>
+                      </div>
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                        <div className="text-2xl font-black text-white">40+</div>
+                        <div className="text-xs text-gray-400">Years Strong</div>
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── CONTACT / CTA ─── */}
       <section id="contact" className="relative py-24 sm:py-32 bg-classic-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
