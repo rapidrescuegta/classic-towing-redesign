@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { FeedbackButton } from '@/components/feedback/FeedbackButton'
+import { FeedbackButtonClient } from '@/components/feedback/FeedbackButtonClient'
 import { JsonLd } from '@/components/JsonLd'
 
 const inter = Inter({
@@ -62,7 +62,7 @@ export default function RootLayout({
       <body className="antialiased">
         <JsonLd />
         {children}
-        <FeedbackButton />
+        <FeedbackButtonClient />
       </body>
     </html>
   )
