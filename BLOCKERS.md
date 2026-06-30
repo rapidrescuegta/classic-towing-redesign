@@ -1,41 +1,27 @@
 # Blockers — Classic Towing Site
 
-## 🔴 BUILD BROKEN — blocks all deploys (since ~2026-05-21)
+## ✅ RESOLVED 2026-06-30 — build "blocker" was NODE_ENV, not a framework bug
 
-**Status:** Awaiting Giuseppe's decision (stack-level version change).
+**Root cause:** the local shell had `NODE_ENV` set to an EMPTY STRING. Next
+treats that as a non-standard value and takes a broken prerender path for its
+internal error pages (`/_global-error` on Next 16, `/_error` `/404` `/500` on
+Next 15) — surfacing as the `useContext` null crash / `<Html> should not be
+imported` error. It was NEVER a Next 16 framework bug.
 
-**Symptom:** `npm run build` exits 1, prerendering Next's internal
-`/_global-error` route: `TypeError: Cannot read properties of null
-(reading 'useContext')`.
+**Fix (commit 76cb655):**
+- `NODE_ENV=production npm run build` builds clean on Next 16.2.9 — no
+  framework downgrade needed. Intended stack preserved.
+- Dockerfile `builder` stage now sets `ENV NODE_ENV=production` so Railway
+  builds are deterministic (previously unset → Next defaulted to production,
+  which is why the March deploy worked; the breakage was local-only).
+- Removed the Next-16 `global-error.tsx` workaround (no longer needed).
+- Removed dev-only feedback widget from layout.
 
-**Verified not fixable from app code (tested 2026-06-29):**
-- Bumped Next 16.2.6 → 16.2.9 (latest patch): still crashes
-- Built with `--webpack` instead of Turbopack: still crashes
-- Reduced `global-error.tsx` to one bare line: still crashes
-- `export const dynamic = 'force-dynamic'` on the route: ignored, still crashes
+**Verification status:**
+- Build: VERIFIED green locally (Next 16.2.9, all 5 routes prerender).
+- Railway deploy: pushed to master; auto-deploy NOT yet confirmed live.
+- Mobile nav scroll fix (overflow-x-clip + scroll-margin-top + scrollIntoView):
+  implemented, but NOT pixel-verified — the Playwright headless env ignores all
+  programmatic scrolling. Needs a real-device tap-test on the live URL.
 
-**Conclusion:** Framework bug (Next 16 + React 19). Root cause is upstream.
-
-**Decision needed from Giuseppe (one of):**
-1. Downgrade to Next 15 (stable, build will pass) — RECOMMENDED. Framework
-   major step back; needs full-site retest after.
-2. Move to Next 16.3 preview/canary — might fix it, but pre-release = risk.
-
-Both are stack changes — NOT to be done silently (Tech Stack rule).
-
-## Impact on open next-steps
-All four next-steps are gated by this. SEO work (sitemap, robots,
-LocalBusiness JSON-LD, richer metadata) and the feedback widget are
-ALREADY in code but have NEVER deployed — the build has been broken
-since they were added.
-
-- Hero section        — can build/edit locally, but cannot ship until build fixed
-- Services pages      — same
-- Contact form        — same
-- SEO setup           — DONE in code, blocked from going live by build
-
-## Live deploy status
-Last SUCCESSFUL Railway deploy: **2026-03-19**. Live URL
-(https://gleaming-hope-production-a79e.up.railway.app) serves the MARCH
-version — the one Mercedez Falcao reviewed. None of the May SEO/feedback
-work is on it yet.
+Live URL: https://gleaming-hope-production-a79e.up.railway.app
