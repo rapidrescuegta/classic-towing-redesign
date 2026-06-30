@@ -162,8 +162,25 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setMenuOpen(false)
+    if (!href.startsWith('#')) return
+    e.preventDefault()
+    if (href === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.history.pushState(null, '', ' ')
+      return
+    }
+    const target = document.getElementById(href.slice(1))
+    if (target) {
+      // scroll-margin-top on the section (globals.css) clears the fixed nav.
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      window.history.pushState(null, '', href)
+    }
+  }
+
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-clip">
       {/* ─── FLEET LIGHTBOX OVERLAY ─── */}
       <AnimatePresence>
         {lightboxItem && <FleetLightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />}
@@ -180,7 +197,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center group">
+            <a href="#" onClick={(e) => handleNavClick(e, '#')} className="flex items-center group">
               <img
                 src="/images/classic-logo.png"
                 alt="Classic Towing & Storage"
@@ -194,6 +211,7 @@ export default function HomePage() {
                 <a
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="relative px-4 py-2 text-sm text-gray-300 hover:text-white transition-colors duration-300 group"
                 >
                   {item.label}
@@ -243,7 +261,7 @@ export default function HomePage() {
                   <a
                     key={item.label}
                     href={item.href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                   >
                     {item.label}

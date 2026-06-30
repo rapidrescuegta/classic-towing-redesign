@@ -19,6 +19,12 @@
     scroll-behavior: smooth;
   }
 
+  /* Offset anchor targets so section headings clear the fixed nav bar
+     (h-16 mobile / h-20 desktop) when navigating via menu links. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
   body {
     font-family: var(--font-body);
     color: var(--color-classic-black);
