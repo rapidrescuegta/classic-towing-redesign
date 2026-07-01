@@ -163,20 +163,32 @@ export default function HomePage() {
   }, [])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    setMenuOpen(false)
-    if (!href.startsWith('#')) return
-    e.preventDefault()
-    if (href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      window.history.pushState(null, '', ' ')
+    if (!href.startsWith('#')) {
+      setMenuOpen(false)
       return
     }
-    const target = document.getElementById(href.slice(1))
-    if (target) {
-      // scroll-margin-top on the section (globals.css) clears the fixed nav.
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      window.history.pushState(null, '', href)
+    e.preventDefault()
+    setMenuOpen(false)
+
+    const performScroll = () => {
+      if (href === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.history.pushState(null, '', ' ')
+        return
+      }
+      const target = document.getElementById(href.slice(1))
+      if (target) {
+        // scroll-margin-top on the section (globals.css) clears the fixed nav.
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        window.history.pushState(null, '', href)
+      }
     }
+
+    // Closing the menu triggers a re-render that makes Framer Motion's frameloop
+    // fire a competing window.scrollTo(0,0) on the next frame, which cancels an
+    // immediate smooth scroll (verified on the live build). Defer our scroll two
+    // frames so it runs AFTER that reset and wins the race.
+    requestAnimationFrame(() => requestAnimationFrame(performScroll))
   }
 
   return (
