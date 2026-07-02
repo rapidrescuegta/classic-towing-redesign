@@ -243,8 +243,12 @@ export default function HomePage() {
               </a>
               <a
                 href={`tel:${PHONE}`}
-                className="md:hidden flex items-center justify-center w-10 h-10 bg-classic-red rounded-lg animate-pulse-red"
+                className="md:hidden flex items-center gap-1.5 h-10 pl-2.5 pr-2.5 bg-classic-red rounded-lg animate-pulse-red"
               >
+                <span className="flex flex-col leading-none text-white text-[10px] font-semibold uppercase tracking-wide text-right">
+                  <span>Need</span>
+                  <span>Help</span>
+                </span>
                 <Phone className="w-5 h-5 text-white" />
               </a>
               <button
