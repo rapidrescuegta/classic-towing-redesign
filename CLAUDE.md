@@ -52,8 +52,8 @@ All content lives in `src/app/page.tsx` (1083 lines). Sections:
 
 | # | Section | Anchor | Description |
 |---|---------|--------|-------------|
-| 1 | Hero | — | 24/7 headline, stats (150+ vehicles, 40+ years, 4 locations), dual CTAs |
-| 2 | About | `#about` | Three-generation family story, 150-truck fleet, trust badges (ISO, Heavy Rescue 401, Police Partner) |
+| 1 | Hero | — | 24/7 headline, stats (250+ vehicles, 40+ years, 4 locations), dual CTAs |
+| 2 | About | `#about` | Three-generation family story, 250-truck fleet, trust badges (ISO, Heavy Rescue 401, Police Partner) |
 | 3 | Services | `#services` | 8 service cards + emergency CTA with dual phone numbers |
 | 4 | Fleet | `#fleet` | 6 vehicles with lightbox zoom (incl. 75-ton rotator flagship) |
 | 5 | Why Classic | — | 6 differentiators + stat cards |
@@ -74,7 +74,7 @@ All content lives in `src/app/page.tsx` (1083 lines). Sections:
 8. Accident Recovery
 
 ## Key Stats
-- 150+ fleet vehicles
+- 250+ fleet vehicles
 - 40+ years in business
 - 4 locations across Southern Ontario
 - 24/7 emergency dispatch

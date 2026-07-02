@@ -61,7 +61,7 @@ const REVIEWS = [
 ]
 
 const STATS = [
-  { value: '150+', label: 'Fleet Vehicles' },
+  { value: '250+', label: 'Fleet Vehicles' },
   { value: '40+', label: 'Years of Service' },
   { value: '4', label: 'Locations' },
   { value: '24/7', label: 'Emergency Dispatch' },
@@ -345,7 +345,7 @@ export default function HomePage() {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-lg sm:text-xl text-gray-400 max-w-xl mb-10 leading-relaxed"
             >
-              Family-owned since the 1980s. Over 150 service vehicles and active personnel across 4 locations. From light-duty towing to heavy-duty recovery — we handle it all.
+              Family-owned since the 1980s — and Southern Ontario&apos;s highest-capacity towing and recovery operation. 250+ service vehicles across 4 locations, dispatched 24/7. From light-duty towing to 75-ton heavy recovery, we set the standard.
             </motion.p>
 
             {/* CTAs */}
@@ -425,7 +425,7 @@ export default function HomePage() {
               </FadeIn>
               <FadeIn delay={0.2}>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  What started as a small light-duty fleet in the 1980s has grown into one of Ontario&apos;s leading towing and storage companies — with over 150 trucks including state-of-the-art heavy-duty equipment, flatbeds, and rotators.
+                  What started as a small light-duty fleet in the 1980s has grown into one of Ontario&apos;s largest and most capable towing and recovery operations — over 250 trucks, including state-of-the-art heavy-duty rigs, flatbeds, and 75-ton rotators built to handle what others can&apos;t.
                 </p>
               </FadeIn>
               <FadeIn delay={0.3}>
@@ -542,7 +542,7 @@ export default function HomePage() {
                 Ontario&apos;s Most Diversified Fleet
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                Over 150 trucks including 1-ton, medium, heavy-duty, flatbed, tandem, float, and rotator vehicles — ready to handle any job.
+                Over 250 trucks including 1-ton, medium, heavy-duty, flatbed, tandem, float, and rotator vehicles — ready to handle any job.
               </p>
             </FadeIn>
           </div>
@@ -602,7 +602,7 @@ export default function HomePage() {
                 <span className="text-gradient-red">On The Industry</span>
               </h2>
               <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                Classic Towing is built on a foundation of honesty, safety, and community. Our trucks are constantly maintained, our drivers are friendly professionals, and we take pride in being a positive force in the towing industry.
+                Classic Towing is built on capability, accountability, and relentless standards — grounded in the family values we started with. Best-maintained trucks, best-trained operators, fastest response. We don&apos;t just work in this industry — we&apos;re raising the bar for it.
               </p>
               <div className="space-y-4">
                 {[
@@ -644,7 +644,7 @@ export default function HomePage() {
                   </div>
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                     <TowTruckIcon className="w-8 h-8 text-classic-red mb-3" />
-                    <div className="text-2xl font-black text-white">150+</div>
+                    <div className="text-2xl font-black text-white">250+</div>
                     <div className="text-sm text-gray-400">Service vehicles</div>
                   </div>
                 </div>
@@ -1048,7 +1048,7 @@ export default function HomePage() {
                 />
               </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                Family-owned and operated since the 1980s. Ontario&apos;s most trusted towing and storage company.
+                Family-owned since the 1980s — Southern Ontario&apos;s leading towing and recovery operation. Setting the standard, one call at a time.
               </p>
               <a
                 href={`tel:${PHONE_TOLL}`}

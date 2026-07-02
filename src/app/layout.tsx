@@ -12,7 +12,7 @@ const inter = Inter({
 const SITE_URL = 'https://classictowing.ca'
 const TITLE = 'Classic Towing & Storage | 24/7 Towing — Toronto, Ajax, Barrie & Hamilton'
 const DESCRIPTION =
-  '24/7 Light, Medium & Heavy Duty Towing across Southern Ontario. 150+ fleet vehicles, 40+ years family-owned. Locations in Toronto, Ajax, Barrie and Hamilton. Call 416-604-3222.'
+  '24/7 Light, Medium & Heavy Duty Towing across Southern Ontario. 250+ fleet vehicles, 40+ years family-owned. Locations in Toronto, Ajax, Barrie and Hamilton. Call 416-604-3222.'
 
 export const metadata: Metadata = {
   title: TITLE,
