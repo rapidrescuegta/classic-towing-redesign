@@ -5,6 +5,8 @@
 // it powers Google's Local Pack, emergency-service rich results,
 // and "open now" badges.
 
+import { FAQS } from '@/data/faqs'
+
 const LOCATIONS = [
   {
     id: 'toronto',
@@ -110,9 +112,21 @@ export function JsonLd() {
     },
   }))
 
+  // FAQPage schema — powers Google FAQ rich results and gives AI answer
+  // engines quotable, factual answers about the business.
+  const faqPage = {
+    '@type': 'FAQPage',
+    '@id': `${SITE}/#faq`,
+    mainEntity: FAQS.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+
   const graph = {
     '@context': 'https://schema.org',
-    '@graph': [organization, ...locations],
+    '@graph': [organization, ...locations, faqPage],
   }
 
   return (

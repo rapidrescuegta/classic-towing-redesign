@@ -36,13 +36,20 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: 'Classic Towing & Storage',
     locale: 'en_CA',
-    images: [{ url: '/images/classic-logo.png', alt: 'Classic Towing & Storage' }],
+    images: [
+      {
+        url: '/images/bg-about.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'Classic Heavy Towing truck — Classic Towing & Storage',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: TITLE,
     description: DESCRIPTION,
-    images: ['/images/classic-logo.png'],
+    images: ['/images/bg-about.jpg'],
   },
   robots: {
     index: true,

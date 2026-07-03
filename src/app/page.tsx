@@ -9,6 +9,7 @@ import {
   ChevronRight, Mail, ExternalLink, Heart, Sparkles
 } from 'lucide-react'
 import TowTruckIcon from '@/components/TowTruckIcon'
+import { FAQS } from '@/data/faqs'
 
 // ─── DATA ────────────────────────────────────────────────────────────
 const PHONE = '416-604-3222'
@@ -980,6 +981,36 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ─── FAQ ─── */}
+      <section id="faq" className="relative py-24 sm:py-32 bg-classic-cream/40 overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <span className="text-classic-red font-bold text-sm uppercase tracking-widest">Frequently Asked Questions</span>
+              <h2 className="text-4xl sm:text-5xl font-black text-classic-black mt-3 mb-4">
+                Answers Before You <span className="text-gradient-red">Even Ask</span>
+              </h2>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="space-y-3">
+              {FAQS.map((f) => (
+                <details
+                  key={f.q}
+                  className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm open:shadow-md transition-shadow"
+                >
+                  <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 font-bold text-classic-black text-lg">
+                    {f.q}
+                    <ChevronDown className="w-5 h-5 text-classic-red shrink-0 transition-transform duration-300 group-open:rotate-180" />
+                  </summary>
+                  <p className="px-6 pb-5 text-classic-steel leading-relaxed">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
