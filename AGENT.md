@@ -51,3 +51,16 @@ _(empty)_
 ### Tools I wish I had
 
 _(empty — propose new ones under `proposals/`)_
+
+### Lesson 2026-07-03 — local builds need NODE_ENV=production
+Shell exports NODE_ENV as an EMPTY STRING; plain `npm run build` crashes
+prerendering /_global-error / /_not-found with "useContext of null".
+Always build with `NODE_ENV=production npm run build`. Root cause doc:
+BLOCKERS.md (resolved 2026-06-30). Do not chase it as a Next.js bug again.
+
+### Lesson 2026-07-03 — Railway GitHub auto-deploy is NOT firing
+Pushes to master on 7/2 and 7/3 produced NO Railway deploys (last auto one:
+7/1). After every push, verify with `railway deployment list`; if no new
+deploy, run `railway up --detach` from a clean tree matching origin/master.
+Root fix (reconnect GitHub trigger in Railway dashboard) needs Giuseppe's
+dashboard access — flagged to him 2026-07-03.
