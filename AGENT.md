@@ -64,3 +64,11 @@ Pushes to master on 7/2 and 7/3 produced NO Railway deploys (last auto one:
 deploy, run `railway up --detach` from a clean tree matching origin/master.
 Root fix (reconnect GitHub trigger in Railway dashboard) needs Giuseppe's
 dashboard access — flagged to him 2026-07-03.
+
+### Update 2026-07-03 — Railway auto-deploy FIXED (supersedes lesson above)
+Root cause: the service had NO repoTrigger (GitHub connection dropped).
+Fixed via Railway GraphQL `serviceConnect` mutation using the CLI session
+token from ~/.railway/config.json — no dashboard needed. Verified: push
+cc97690 auto-deployed (9ad8e6ba SUCCESS, commitHash matches). Still sanity-
+check `railway deployment list` after pushes, but manual `railway up` is no
+longer the routine.
