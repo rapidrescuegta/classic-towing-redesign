@@ -710,7 +710,7 @@ export default function HomePage() {
               </FadeIn>
               <FadeIn delay={0.15}>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  Through a signature splash of pink on trucks and uniforms, Pink Theory has created a growing community of female tow operators. New female hires receive pink gloves and straps — and those who stay on and meet their goals are offered a fully pink, branded truck. Mercedez was named <strong className="text-classic-black">Tow Times&apos; Woman of Towing</strong>, and Pink Theory has been featured in CAA Magazine.
+                  Through a signature splash of pink on trucks and uniforms, Pink Theory has created a growing community of female tow operators. New female hires receive pink gloves and straps — and those who stay on and meet their goals are offered a fully pink, branded truck. Mercedez was named <a href="https://towtimesdigital.com/0825tt/" target="_blank" rel="noopener noreferrer" className="text-pink-600 font-semibold underline decoration-pink-300 underline-offset-2 hover:text-pink-700 transition-colors"><strong>Tow Times&apos; Woman of Towing</strong></a>, and Pink Theory has been featured in <a href="https://digital.caamagazine.com/winter-2025/pink-theory-women-in-towing" target="_blank" rel="noopener noreferrer" className="text-pink-600 font-semibold underline decoration-pink-300 underline-offset-2 hover:text-pink-700 transition-colors">CAA Magazine</a>.
                 </p>
               </FadeIn>
               <FadeIn delay={0.2}>
