@@ -85,6 +85,97 @@ function FadeIn({ children, delay = 0, className = '' }: { children: React.React
   )
 }
 
+// ─── CONTACT FORM (static, mailto — no backend) ─────────────────────
+const CONTACT_EMAIL = 'gracco@classictowing.ca'
+
+function ContactForm() {
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [service, setService] = useState('')
+  const [message, setMessage] = useState('')
+  const [sent, setSent] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const subject = `Website inquiry${service ? ` — ${service}` : ''}`
+    const body =
+      `Name: ${name}\n` +
+      `Phone: ${phone}\n` +
+      `Service: ${service || 'Not specified'}\n\n` +
+      `${message}`
+    window.location.href =
+      `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSent(true)
+  }
+
+  return (
+    <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-sm">
+      <div className="flex items-center gap-2 mb-1">
+        <Mail className="w-5 h-5 text-classic-red" />
+        <h3 className="text-white font-bold text-lg">Request a Quote</h3>
+      </div>
+      <p className="text-gray-500 text-sm mb-6">
+        Non-emergency inquiries only. For immediate roadside help, call{' '}
+        <a href={`tel:${PHONE}`} className="text-classic-red font-semibold hover:underline">{PHONE}</a>.
+      </p>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <input
+            type="text"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your name"
+            aria-label="Your name"
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-classic-red transition-colors"
+          />
+          <input
+            type="tel"
+            required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone number"
+            aria-label="Phone number"
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-classic-red transition-colors"
+          />
+        </div>
+        <select
+          value={service}
+          onChange={(e) => setService(e.target.value)}
+          aria-label="Service needed"
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-classic-red transition-colors [&>option]:text-black"
+        >
+          <option value="">Service needed (optional)</option>
+          {SERVICES.map((s) => (
+            <option key={s.title} value={s.title}>{s.title}</option>
+          ))}
+        </select>
+        <textarea
+          required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="How can we help?"
+          rows={4}
+          aria-label="Message"
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:border-classic-red transition-colors resize-none"
+        />
+        <button
+          type="submit"
+          className="group w-full flex items-center justify-center gap-2 bg-classic-red hover:bg-classic-red-dark text-white px-6 py-4 rounded-xl font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/40"
+        >
+          Send Inquiry
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </button>
+        {sent && (
+          <p className="text-sm text-green-400 text-center" role="status">
+            Your email app should open with the message ready to send. Prefer to talk? Call {PHONE}.
+          </p>
+        )}
+      </form>
+    </div>
+  )
+}
+
 // ─── FLEET LIGHTBOX ─────────────────────────────────────────────────
 function FleetLightbox({ item, onClose }: { item: typeof FLEET_ITEMS[number]; onClose: () => void }) {
   useEffect(() => {
@@ -1051,18 +1142,7 @@ export default function HomePage() {
                 </FadeIn>
               </div>
               <FadeIn delay={0.2}>
-                <div className="grid grid-cols-2 gap-4">
-                  {LOCATIONS.map((loc) => (
-                    <a
-                      key={loc.city}
-                      href={`tel:${loc.phone}`}
-                      className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all duration-300 group"
-                    >
-                      <div className="text-white font-bold mb-1">{loc.city}</div>
-                      <div className="text-classic-red text-sm font-medium group-hover:underline">{loc.phone}</div>
-                    </a>
-                  ))}
-                </div>
+                <ContactForm />
               </FadeIn>
             </div>
           </div>
